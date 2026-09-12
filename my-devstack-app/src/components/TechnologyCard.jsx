@@ -30,11 +30,15 @@ const getBadgeStyle = (badge) => {
   }
 };
 
-const TechnologyCard = ({ tech, onAdd }) => {
+const TechnologyCard = ({ tech, isSelected, onAdd }) => {
   const { name, category, description, icon, rating, difficulty, badge } = tech;
 
   return (
-    <div className="bg-white rounded-2xl p-6 border border-slate-200/70 shadow-xs hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between h-full group">
+    <div className={`bg-white rounded-2xl p-6 border transition-all duration-300 flex flex-col justify-between h-full group ${
+      isSelected 
+        ? 'border-pink-300 ring-2 ring-pink-500/10 shadow-md' 
+        : 'border-slate-200/70 hover:shadow-xl hover:-translate-y-1.5'
+    }`}>
       
       {/* Top Header: Icon + Badge */}
       <div>
@@ -93,9 +97,13 @@ const TechnologyCard = ({ tech, onAdd }) => {
         {/* Add to Stack Button */}
         <button
           onClick={() => onAdd && onAdd(tech)}
-          className="w-full bg-[#0b132b] hover:bg-slate-800 text-white font-semibold text-sm py-3 px-4 rounded-xl transition-all duration-200 shadow-sm hover:shadow-md active:scale-[0.99] cursor-pointer flex items-center justify-center"
+          className={`w-full font-semibold text-sm py-3 px-4 rounded-xl transition-all duration-200 shadow-sm flex items-center justify-center cursor-pointer ${
+            isSelected 
+              ? 'bg-pink-50 text-pink-600 border border-pink-200 cursor-default opacity-90'
+              : 'bg-[#0b132b] hover:bg-slate-800 text-white hover:shadow-md active:scale-[0.99]'
+          }`}
         >
-          Add to Stack
+          {isSelected ? 'Added to Stack ✓' : 'Add to Stack'}
         </button>
       </div>
 

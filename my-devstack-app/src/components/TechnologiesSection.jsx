@@ -1,7 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import TechnologyCard from './TechnologyCard';
+import YourStackSidebar from './YourStackSidebar';
 
-const TechnologiesSection = ({ onAddToStack }) => {
+const TechnologiesSection = ({ 
+  selectedStack = [], 
+  onAddToStack, 
+  onRemoveFromStack, 
+  onClearStack 
+}) => {
   const [technologies, setTechnologies] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -44,24 +50,29 @@ const TechnologiesSection = ({ onAddToStack }) => {
 
         {/* Loading State */}
         {isLoading && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {[...Array(6)].map((_, i) => (
-              <div 
-                key={i} 
-                className="bg-white rounded-2xl p-6 border border-slate-200/60 shadow-xs animate-pulse space-y-4 h-72 flex flex-col justify-between"
-              >
-                <div className="flex justify-between items-center">
-                  <div className="w-12 h-12 bg-slate-200 rounded-xl"></div>
-                  <div className="w-16 h-6 bg-slate-200 rounded-full"></div>
+          <div className="flex flex-col lg:flex-row gap-8 items-start">
+            <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full">
+              {[...Array(6)].map((_, i) => (
+                <div 
+                  key={i} 
+                  className="bg-white rounded-2xl p-6 border border-slate-200/60 shadow-xs animate-pulse space-y-4 h-72 flex flex-col justify-between"
+                >
+                  <div className="flex justify-between items-center">
+                    <div className="w-12 h-12 bg-slate-200 rounded-xl"></div>
+                    <div className="w-16 h-6 bg-slate-200 rounded-full"></div>
+                  </div>
+                  <div className="space-y-2">
+                    <div className="h-6 bg-slate-200 rounded-md w-3/4"></div>
+                    <div className="h-4 bg-slate-100 rounded-md w-full"></div>
+                    <div className="h-4 bg-slate-100 rounded-md w-5/6"></div>
+                  </div>
+                  <div className="h-10 bg-slate-200 rounded-xl w-full"></div>
                 </div>
-                <div className="space-y-2">
-                  <div className="h-6 bg-slate-200 rounded-md w-3/4"></div>
-                  <div className="h-4 bg-slate-100 rounded-md w-full"></div>
-                  <div className="h-4 bg-slate-100 rounded-md w-5/6"></div>
-                </div>
-                <div className="h-10 bg-slate-200 rounded-xl w-full"></div>
-              </div>
-            ))}
+              ))}
+            </div>
+            <div className="w-full lg:w-80 shrink-0">
+              <YourStackSidebar selectedStack={[]} />
+            </div>
           </div>
         )}
 
@@ -72,23 +83,38 @@ const TechnologiesSection = ({ onAddToStack }) => {
             <p className="text-slate-500 text-sm mb-4">{error}</p>
             <button 
               onClick={() => window.location.reload()}
-              className="px-4 py-2 bg-rose-600 text-white rounded-xl text-sm font-medium hover:bg-rose-700 transition-colors"
+              className="px-4 py-2 bg-rose-600 text-white rounded-xl text-sm font-medium hover:bg-rose-700 transition-colors cursor-pointer"
             >
               Retry
             </button>
           </div>
         )}
 
-        {/* 3-Column Responsive Technology Grid */}
+        {/* Main Content Layout: Tech Grid + Your Stack Sidebar */}
         {!isLoading && !error && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {technologies.map((tech) => (
-              <TechnologyCard 
-                key={tech.id} 
-                tech={tech} 
-                onAdd={onAddToStack}
+          <div className="flex flex-col lg:flex-row gap-8 items-start">
+            
+            {/* 3-Column Responsive Technology Grid */}
+            <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full">
+              {technologies.map((tech) => (
+                <TechnologyCard 
+                  key={tech.id} 
+                  tech={tech} 
+                  isSelected={selectedStack.some((item) => item.id === tech.id)}
+                  onAdd={onAddToStack}
+                />
+              ))}
+            </div>
+
+            {/* "Your Stack" Sidebar Panel */}
+            <div className="w-full lg:w-80 shrink-0">
+              <YourStackSidebar 
+                selectedStack={selectedStack}
+                onRemoveFromStack={onRemoveFromStack}
+                onClearStack={onClearStack}
               />
-            ))}
+            </div>
+
           </div>
         )}
 
