@@ -96,14 +96,15 @@ const TechnologyCard = ({ tech, isSelected, onAdd }) => {
 
         {/* Add to Stack Button */}
         <button
+          disabled={isSelected}
           onClick={() => onAdd && onAdd(tech)}
-          className={`w-full font-semibold text-sm py-3 px-4 rounded-xl transition-all duration-200 shadow-sm flex items-center justify-center cursor-pointer ${
+          className={`w-full font-semibold text-sm py-3 px-4 rounded-xl transition-all duration-200 shadow-sm flex items-center justify-center ${
             isSelected 
-              ? 'bg-pink-50 text-pink-600 border border-pink-200 cursor-default opacity-90'
-              : 'bg-[#0b132b] hover:bg-slate-800 text-white hover:shadow-md active:scale-[0.99]'
+              ? 'bg-pink-50 text-pink-600 border border-pink-200 cursor-not-allowed opacity-90'
+              : 'bg-[#0b132b] hover:bg-slate-800 text-white hover:shadow-md active:scale-[0.99] cursor-pointer'
           }`}
         >
-          {isSelected ? 'Added to Stack ✓' : 'Add to Stack'}
+          {isSelected ? '✓ Added to Stack' : 'Add to Stack'}
         </button>
       </div>
 

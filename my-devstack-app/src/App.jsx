@@ -6,16 +6,14 @@ import TechnologiesSection from './components/TechnologiesSection';
 function App() {
   const [selectedStack, setSelectedStack] = useState([]);
 
-  // Add technology to stack (enforcing 1 tech per category)
+  // Add technology to stack
   const handleAddToStack = (tech) => {
-    setSelectedStack((prevStack) => {
-      if (prevStack.some((item) => item.id === tech.id)) {
-        return prevStack;
-      }
-      // Replace existing technology in the same category
-      const filtered = prevStack.filter((item) => item.category !== tech.category);
-      return [...filtered, tech];
-    });
+    const isAlreadyAdded = selectedStack.some((item) => item.id === tech.id);
+    if (isAlreadyAdded) {
+      alert(`${tech.name} is already in your stack!`);
+      return;
+    }
+    setSelectedStack((prevStack) => [...prevStack, tech]);
   };
 
   // Remove technology from stack

@@ -6,12 +6,12 @@ const YourStackSidebar = ({ selectedStack = [], onRemoveFromStack, onClearStack 
   return (
     <div className="bg-white rounded-3xl p-6 border border-slate-200/70 shadow-xs sticky top-24">
       {/* Panel Header */}
-      <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
+      <h3 className="text-2xl font-bold text-slate-900 tracking-tight">
         Your Stack
       </h3>
       
       {/* Subtitle / Selected Count */}
-      <p className={`text-sm mt-1 mb-6 transition-colors ${count === 0 ? 'text-slate-400' : 'text-pink-600 font-semibold'}`}>
+      <p className="text-sm mt-1 mb-6 text-slate-400 font-medium">
         {count === 0 ? 'No technologies selected yet.' : `${count} ${count === 1 ? 'Technology' : 'Technologies'} Selected`}
       </p>
 
@@ -23,27 +23,27 @@ const YourStackSidebar = ({ selectedStack = [], onRemoveFromStack, onClearStack 
           </p>
         </div>
       ) : (
-        /* Selected Items List */
-        <div className="space-y-3">
-          <div className="max-h-[420px] overflow-y-auto pr-1 space-y-3">
+        /* Selected Items List (1 Column Layout) */
+        <div className="space-y-4">
+          <div className="max-h-[420px] overflow-y-auto pr-1 space-y-3 flex flex-col">
             {selectedStack.map((tech) => (
               <div 
                 key={tech.id} 
-                className="flex items-center justify-between bg-slate-50/80 border border-slate-100 p-3 rounded-2xl hover:border-pink-100 hover:bg-pink-50/20 transition-all group"
+                className="flex items-center justify-between bg-white border border-slate-200/80 p-3.5 rounded-2xl shadow-xs hover:border-slate-300 transition-all group"
               >
                 <div className="flex items-center space-x-3 min-w-0">
-                  <div className="w-8 h-8 rounded-lg bg-white p-1 border border-slate-100 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-xl bg-slate-50 p-1.5 border border-slate-100 flex items-center justify-center shrink-0">
                     <img 
                       src={tech.icon} 
                       alt={tech.name} 
-                      className="w-6 h-6 object-contain"
+                      className="w-7 h-7 object-contain"
                     />
                   </div>
                   <div className="min-w-0">
-                    <h4 className="text-sm font-bold text-slate-800 truncate group-hover:text-pink-600 transition-colors">
+                    <h4 className="text-sm font-bold text-slate-900 truncate">
                       {tech.name}
                     </h4>
-                    <span className="text-[11px] text-slate-400 font-medium">
+                    <span className="text-xs text-slate-400 font-medium block">
                       {tech.category}
                     </span>
                   </div>
@@ -51,26 +51,28 @@ const YourStackSidebar = ({ selectedStack = [], onRemoveFromStack, onClearStack 
 
                 <button
                   onClick={() => onRemoveFromStack && onRemoveFromStack(tech.id)}
-                  className="text-slate-400 hover:text-rose-500 hover:bg-rose-50 p-1.5 rounded-lg transition-colors cursor-pointer shrink-0 ml-2"
+                  className="text-slate-400 hover:text-slate-600 p-1.5 rounded-lg transition-colors cursor-pointer shrink-0 ml-2"
                   aria-label={`Remove ${tech.name} from stack`}
                   title="Remove from stack"
                 >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" />
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.8" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </button>
               </div>
             ))}
           </div>
 
-          {/* Clear Stack Button */}
+          {/* Remove All Button */}
           {onClearStack && (
-            <button
-              onClick={onClearStack}
-              className="w-full text-xs text-slate-400 hover:text-rose-500 font-medium py-2 transition-colors cursor-pointer text-center hover:underline"
-            >
-              Clear Stack
-            </button>
+            <div className="pt-2">
+              <button
+                onClick={onClearStack}
+                className="w-full text-base font-bold text-rose-600 border border-rose-200 hover:border-rose-300 hover:bg-rose-50/50 py-3 rounded-2xl transition-all cursor-pointer text-center"
+              >
+                Remove All
+              </button>
+            </div>
           )}
         </div>
       )}
