@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import TechnologiesSection from './components/TechnologiesSection';
+import Footer from './components/Footer';
 
 function App() {
   const [selectedStack, setSelectedStack] = useState([]);
@@ -27,12 +28,12 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-white font-sans">
+    <div className="min-h-screen bg-white font-sans flex flex-col justify-between">
       {/* Sticky Navbar Component */}
       <Navbar />
 
       {/* Main Content Area */}
-      <main>
+      <main className="flex-1">
         {/* Banner / Hero Section */}
         <Hero />
 
@@ -44,6 +45,9 @@ function App() {
           onClearStack={handleClearStack}
         />
       </main>
+
+      {/* Footer Component */}
+      <Footer />
     </div>
   );
 }
