@@ -1,5 +1,27 @@
 @import "tailwindcss";
 
+:root {
+  /* Single Shared Gradient Brand Theme: Orange -> Pink -> Violet */
+  --brand-gradient: linear-gradient(135deg, #f97316 0%, #ec4899 50%, #8b5cf6 100%);
+  --brand-gradient-hover: linear-gradient(135deg, #ea580c 0%, #db2777 50%, #7c3aed 100%);
+}
+
+/* Shared Brand Theme Utilities */
+.bg-brand-gradient {
+  background-image: var(--brand-gradient);
+}
+
+.hover\:bg-brand-gradient-hover:hover {
+  background-image: var(--brand-gradient-hover);
+}
+
+.text-brand-gradient {
+  background-image: var(--brand-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 @layer base {
   body {
     @apply bg-slate-50 text-slate-800 antialiased min-h-screen font-sans;

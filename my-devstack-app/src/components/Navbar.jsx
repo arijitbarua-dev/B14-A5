@@ -51,7 +51,7 @@ const Navbar = () => {
               Sign In
             </button>
 
-            <button className="text-sm md:text-base font-medium text-white bg-gradient-to-r from-pink-500 via-pink-600 to-rose-500 hover:from-pink-600 hover:to-rose-600 px-6 py-2.5 rounded-full shadow-sm hover:shadow-md shadow-pink-200 hover:shadow-pink-300 transition-all transform hover:-translate-y-0.5 cursor-pointer">
+            <button className="text-sm md:text-base font-medium text-white bg-brand-gradient hover:opacity-90 px-6 py-2.5 rounded-full shadow-sm hover:shadow-md shadow-pink-200 transition-all transform hover:-translate-y-0.5 cursor-pointer">
               Sign Up
             </button>
           </div>
@@ -101,7 +101,7 @@ const Navbar = () => {
             <button className="w-full text-center py-2 text-slate-700 font-medium hover:text-pink-600">
               Sign In
             </button>
-            <button className="w-full text-center py-2.5 text-white bg-gradient-to-r from-pink-500 to-rose-500 rounded-full font-medium shadow-md shadow-pink-200">
+            <button className="w-full text-center py-2.5 text-white bg-brand-gradient hover:opacity-90 rounded-full font-medium shadow-md shadow-pink-200">
               Sign Up
             </button>
           </div>

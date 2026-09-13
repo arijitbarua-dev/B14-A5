@@ -21,7 +21,7 @@ const Hero = () => {
             {/* Two-Tone Heading */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight sm:leading-tight">
               Build Your Ideal{' '}
-              <span className="bg-gradient-to-r from-orange-500 via-pink-500 to-purple-600 bg-clip-text text-transparent block sm:inline-block">
+              <span className="text-brand-gradient block sm:inline-block">
                 Development Stack
               </span>
             </h1>
@@ -33,7 +33,7 @@ const Hero = () => {
 
             {/* Two Action Buttons */}
             <div className="flex flex-wrap items-center gap-4 pt-2">
-              <button className="bg-gradient-to-r from-orange-500 via-pink-500 to-rose-500 text-white font-semibold text-sm sm:text-base px-6 py-3 rounded-xl shadow-md shadow-pink-100 hover:shadow-lg hover:opacity-95 transition-all transform hover:-translate-y-0.5 cursor-pointer">
+              <button className="bg-brand-gradient hover:opacity-90 text-white font-semibold text-sm sm:text-base px-6 py-3 rounded-xl shadow-md shadow-pink-100 hover:shadow-lg transition-all transform hover:-translate-y-0.5 cursor-pointer">
                 Explore Technologies
               </button>
 

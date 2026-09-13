@@ -39,7 +39,7 @@ const TechnologiesSection = ({
         <div className="mb-10 sm:mb-14 text-left">
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
             Explore the{' '}
-            <span className="bg-gradient-to-r from-pink-500 via-rose-500 to-purple-600 bg-clip-text text-transparent">
+            <span className="text-brand-gradient">
               Technologies
             </span>
           </h2>

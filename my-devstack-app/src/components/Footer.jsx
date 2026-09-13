@@ -12,11 +12,11 @@ const Footer = () => {
         <div className="block md:hidden text-center pb-6">
           {/* Centered Brand Logo & Name */}
           <div className="flex items-center justify-center space-x-2.5 mb-5 cursor-pointer">
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-pink-500 via-rose-500 to-purple-600 flex items-center justify-center text-white text-xs font-black shadow-xs">
+            <div className="w-9 h-9 rounded-xl bg-brand-gradient flex items-center justify-center text-white text-xs font-black shadow-xs">
               DS
             </div>
             <span className="text-2xl font-extrabold text-slate-900 tracking-tight">
-              Dev <span className="text-pink-600">Stack</span>
+              Dev <span className="text-brand-gradient">Stack</span>
             </span>
           </div>
 
@@ -86,11 +86,11 @@ const Footer = () => {
                   />
                 ) : (
                   <div className="flex items-center space-x-2">
-                    <div className="w-8 h-8 rounded-lg bg-gradient-to-tr from-pink-500 via-rose-500 to-purple-600 flex items-center justify-center text-white text-xs font-black shadow-xs">
+                    <div className="w-8 h-8 rounded-lg bg-brand-gradient flex items-center justify-center text-white text-xs font-black shadow-xs">
                       DS
                     </div>
                     <span className="text-xl font-extrabold text-slate-900 tracking-tight">
-                      Dev <span className="text-pink-600">Stack</span>
+                      Dev <span className="text-brand-gradient">Stack</span>
                     </span>
                   </div>
                 )}
