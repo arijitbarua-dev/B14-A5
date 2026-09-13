@@ -4,7 +4,7 @@ const YourStackSidebar = ({ selectedStack = [], onRemoveFromStack, onClearStack 
   const count = selectedStack.length;
 
   return (
-    <div className="bg-white rounded-3xl p-6 border border-slate-200/70 shadow-xs sticky top-24">
+    <div className="bg-white rounded-3xl p-6 border border-slate-200/70 shadow-xs lg:sticky lg:top-24">
       {/* Panel Header */}
       <h3 className="text-2xl font-bold text-slate-900 tracking-tight">
         Your Stack
