@@ -48,30 +48,44 @@ const TechnologiesSection = ({
           </p>
         </div>
 
-        {/* Loading State */}
+        {/* Loading State with Message & Spinner */}
         {isLoading && (
-          <div className="flex flex-col lg:flex-row gap-8 items-start">
-            <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full">
-              {[...Array(6)].map((_, i) => (
-                <div 
-                  key={i} 
-                  className="bg-white rounded-2xl p-6 border border-slate-200/60 shadow-xs animate-pulse space-y-4 h-72 flex flex-col justify-between"
-                >
-                  <div className="flex justify-between items-center">
-                    <div className="w-12 h-12 bg-slate-200 rounded-xl"></div>
-                    <div className="w-16 h-6 bg-slate-200 rounded-full"></div>
-                  </div>
-                  <div className="space-y-2">
-                    <div className="h-6 bg-slate-200 rounded-md w-3/4"></div>
-                    <div className="h-4 bg-slate-100 rounded-md w-full"></div>
-                    <div className="h-4 bg-slate-100 rounded-md w-5/6"></div>
-                  </div>
-                  <div className="h-10 bg-slate-200 rounded-xl w-full"></div>
-                </div>
-              ))}
+          <div className="space-y-8">
+            {/* Centered Loading Spinner & Message */}
+            <div className="flex items-center justify-center space-x-3 py-6 bg-white/80 border border-slate-200/60 rounded-2xl shadow-xs">
+              <svg className="animate-spin h-6 w-6 text-pink-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              <span className="text-slate-700 font-semibold text-base">
+                Loading technologies...
+              </span>
             </div>
-            <div className="w-full lg:w-80 shrink-0">
-              <YourStackSidebar selectedStack={[]} />
+
+            {/* Skeleton Grid Placeholders */}
+            <div className="flex flex-col lg:flex-row gap-8 items-start">
+              <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 w-full">
+                {[...Array(6)].map((_, i) => (
+                  <div 
+                    key={i} 
+                    className="bg-white rounded-2xl p-6 border border-slate-200/60 shadow-xs animate-pulse space-y-4 h-72 flex flex-col justify-between"
+                  >
+                    <div className="flex justify-between items-center">
+                      <div className="w-12 h-12 bg-slate-200 rounded-xl"></div>
+                      <div className="w-16 h-6 bg-slate-200 rounded-full"></div>
+                    </div>
+                    <div className="space-y-2">
+                      <div className="h-6 bg-slate-200 rounded-md w-3/4"></div>
+                      <div className="h-4 bg-slate-100 rounded-md w-full"></div>
+                      <div className="h-4 bg-slate-100 rounded-md w-5/6"></div>
+                    </div>
+                    <div className="h-10 bg-slate-200 rounded-xl w-full"></div>
+                  </div>
+                ))}
+              </div>
+              <div className="w-full lg:w-80 shrink-0">
+                <YourStackSidebar selectedStack={[]} />
+              </div>
             </div>
           </div>
         )}
